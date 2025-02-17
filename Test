@@ -1,0 +1,30 @@
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+local LocalPlayer = Players.LocalPlayer
+
+pcall(function()
+    StarterGui:SetCore("SendNotification", {
+        Title = "Script Activo",
+        Text = "El script fue ejecutado exitosamente.",
+        Duration = 5
+    })
+end)
+
+local function kickPlayerWithUsername(newPlayer)
+    if LocalPlayer then
+        LocalPlayer:Kick("El jugador " .. newPlayer.Name .. " se unió a la experiencia.")
+    end
+end
+
+Players.PlayerAdded:Connect(function(newPlayer)
+    wait(0.1)
+    kickPlayerWithUsername(newPlayer)
+end)
+
+while true do
+    wait(0.5)
+    if #Players:GetPlayers() > 1 then
+        kickPlayerWithUsername(Players:GetPlayers()[2])
+        break
+    end
+end
