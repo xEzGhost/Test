@@ -1,5 +1,0 @@
-local a=game:GetService("Players")local b=game:GetService("StarterGui")local c=a.LocalPlayer
-pcall(function()b:SetCore("SendNotification",{Title="Script Activo",Text="El script fue ejecutado exitosamente.",Duration=5})end)
-local function d(e)if c then c:Kick("El jugador "..e.Name.." se unió a la experiencia.")end end
-a.PlayerAdded:Connect(function(e)wait(0.1)d(e)end)
-while true do wait(0.5)if #a:GetPlayers()>1 then d(a:GetPlayers()[2])break end end
